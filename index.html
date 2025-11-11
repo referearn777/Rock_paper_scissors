@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rock Paper Scissor Game</title>
+    <!-- Stylesheet: make sure the filename and path match the CSS file (style.css in the same folder) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Font Awesome for the hand icons (uncommented so icons load from CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="game-title">Rock Paper Scissors Game</h1>
+    <div class="scores">
+        <p>Computer :
+            <span id="computer_score">0</span>
+        </p>
+        <p>
+            You :
+            <span id="user_score">0</span>
+        </p>
+    </div>
+    <div class="weapons">
+        <button data-choice="rock" aria-label="rock">
+            <i class="far fa-hand-rock" aria-hidden="true"></i>
+            <span class="emoji" aria-hidden="true"></span>
+        </button>
+        <button data-choice="paper" aria-label="paper">
+            <i class="far fa-hand-paper" aria-hidden="true"></i>
+            <span class="emoji" aria-hidden="true"></span>
+        </button>
+        <button data-choice="scissor" aria-label="scissors">
+            <i class="far fa-hand-scissors" aria-hidden="true"></i>
+            <span class="emoji" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="details">
+        <p id="user_choice"></p>
+        <p id="comp_choice"></p>
+        <p id="result"></p>
+    </div>
+</div>
+
+<!-- Script -->
+<script src="script.js"></script>
+
+<!-- Win popup -->
+<div id="winPopup" class="win-popup" role="status" aria-live="polite" aria-hidden="true">
+    <div class="win-popup-card">
+        <button class="close-popup" aria-label="close">×</button>
+        <div class="win-emoji">🎉</div>
+        <div class="win-message">Congrats — You win!</div>
+    </div>
+</div>
+</body>
+</html>

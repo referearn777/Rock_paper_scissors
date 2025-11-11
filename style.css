@@ -1,0 +1,193 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #ffcf1b,
+        #ff8b1b
+    );
+}
+.container{
+    width: 45%;
+    min-width: 500px;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+.scores{
+    margin-bottom: 50px;
+    text-align: right;
+}
+.weapons{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.weapons button{
+    background-color: #ffd51b;
+    color: #000000;
+    border: none;
+    font-size: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Emoji fallback styling for weapon buttons (shown if icon fonts don't load) */
+.weapons button .emoji{
+    display: inline-block;
+    font-size: 36px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* Title inside the game container */
+.game-title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0 0 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Win / Lose animations */
+@keyframes winPulse {
+    0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 15px 25px rgba(0,0,0,0.15); }
+    50% { transform: translate(-50%, -50%) scale(1.06); box-shadow: 0 25px 40px rgba(0,0,0,0.25); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes loseShake {
+    0% { transform: translate(-50%, -50%) translateX(0); }
+    15% { transform: translate(-50%, -50%) translateX(-8px); }
+    30% { transform: translate(-50%, -50%) translateX(8px); }
+    45% { transform: translate(-50%, -50%) translateX(-6px); }
+    60% { transform: translate(-50%, -50%) translateX(6px); }
+    75% { transform: translate(-50%, -50%) translateX(-3px); }
+    100% { transform: translate(-50%, -50%) translateX(0); }
+}
+
+.win-anim{
+    animation: winPulse 0.6s ease;
+}
+
+.lose-anim{
+    animation: loseShake 0.6s ease;
+}
+
+/* Result pop animations */
+@keyframes resultPopWin {
+    0% { transform: scale(0.92); opacity: 0.85; }
+    60% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes resultPopLose {
+    0% { transform: translateX(0) scale(0.95); opacity: 0.85; }
+    40% { transform: translateX(-6px) scale(1.05); opacity: 1; }
+    100% { transform: translateX(0) scale(1); }
+}
+
+.pop-win{
+    animation: resultPopWin 0.45s ease;
+}
+
+.pop-lose{
+    animation: resultPopLose 0.45s ease;
+}
+
+/* Win popup styles */
+.win-popup{
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+    z-index: 1200;
+}
+.win-popup.show{
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+.win-popup-card{
+    background: linear-gradient(180deg,#fff,#f8f8ff);
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    min-width: 260px;
+    text-align: center;
+    position: relative;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+.win-popup .win-emoji{
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+.win-popup .win-message{
+    font-weight: 700;
+    color: #1b5e20; /* green */
+    font-size: 18px;
+}
+.win-popup .close-popup{
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #777;
+}
+
+/* small entrance pop for the popup */
+@keyframes popupBounce {
+    0% { transform: translateX(-50%) scale(0.86); opacity: 0; }
+    60% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); }
+}
+.win-popup.show .win-popup-card{
+    animation: popupBounce 320ms cubic-bezier(.2,.9,.2,1);
+}
+.details{
+    margin-top: 30px;
+    text-align: center;
+}
+.scores,.details{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+#result{
+    width: 180px;
+    padding: 10px 0;
+    margin: 30px auto;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+#user_choice,
+#computer_choice{
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+span{
+    font-weight: 600;
+}
